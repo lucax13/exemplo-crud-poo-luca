@@ -1,2 +1,2 @@
-# exemplo-crud-poo
+# exemplo-crud-poo refatorado com orientação objetos
 
