@@ -1,7 +1,11 @@
 <?php
-require_once "../src/funcoes-fabricantes.php";
 
-$listaDeFabricantes =listarFabricantes($conexao);
+use ExemploCrud\Services\FabricanteServico;
+
+require_once "../vendor/autoload.php";
+
+$fabricanteServico = new FabricanteServico();
+$listaDeFabricantes = $fabricanteServico->listarTodos();
 
 $quantidade = count($listaDeFabricantes)
 ?>
