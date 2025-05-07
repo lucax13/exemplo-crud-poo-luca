@@ -38,4 +38,8 @@ final class Fabricante {
     {
         $this->nome = $nome;
     }
+
+   
 } 
+
+
