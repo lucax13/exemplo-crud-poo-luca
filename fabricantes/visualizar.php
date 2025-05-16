@@ -1,13 +1,22 @@
 <?php
 
+use ExemploCrud\Helpers\Utils;
 use ExemploCrud\Services\FabricanteServico;
 
 require_once "../vendor/autoload.php";
+$mensagemDeErro = "";
 
-$fabricanteServico = new FabricanteServico();
-$listaDeFabricantes = $fabricanteServico->listarTodos();
+die("ok");
 
-$quantidade = count($listaDeFabricantes)
+try {
+    $fabricanteServico = new FabricanteServico();
+    $listaDeFabricantes = $fabricanteServico->listarTodo();
+    $quantidade = count($listaDeFabricantes);
+} catch (Throwable $erro) {
+    Utils::registrarLog($erro);
+    $mensagemDeErro = "Erro ao carregar dados";
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -27,11 +36,16 @@ $quantidade = count($listaDeFabricantes)
         <hr>
         <h2>Lendo e carregando todos os fabricantes.</h2>
 
+        <?php if (!empty($mensagemDeErro)): ?>
+            <p class="alert alert-danger"> <?= $mensagemDeErro ?></p>
+
+        <?php endif; ?>
+
         <p><a class="btn btn-primary btn-sm" href="inserir.php">Inserir novo fabricante</a></p>
 
 
         <table class="table table-hover table-bordered w-50">
-            <caption>Lista de Fabricantes: <?=$quantidade?></caption>
+            <caption>Lista de Fabricantes: <?= $quantidade ?></caption>
             <thead class="table-light">
                 <tr>
                     <th>ID</th>
@@ -40,17 +54,17 @@ $quantidade = count($listaDeFabricantes)
                 </tr>
             </thead>
             <tbody>
-<?php foreach($listaDeFabricantes as $fabricante){?>
-                <tr>
-                    <td> <?= $fabricante["id"] ?></td>
-                    <td> <?= $fabricante["nome"] ?></td>
-                    <td> 
-                        <a class="btn btn-warning btn-sm" href="atualizar.php?id=<?=$fabricante['id']?>">Editar</a>
-                    
-                        <a class="btn btn-danger btn-sm" href="excluir.php?id=<?=$fabricante['id']?>">Excluir</a>
-                    </td>
-                </tr>
-<?php }?>
+                <?php foreach ($listaDeFabricantes as $fabricante) { ?>
+                    <tr>
+                        <td> <?= $fabricante["id"] ?></td>
+                        <td> <?= $fabricante["nome"] ?></td>
+                        <td>
+                            <a class="btn btn-warning btn-sm" href="atualizar.php?id=<?= $fabricante['id'] ?>">Editar</a>
+
+                            <a class="btn btn-danger btn-sm" href="excluir.php?id=<?= $fabricante['id'] ?>">Excluir</a>
+                        </td>
+                    </tr>
+                <?php } ?>
             </tbody>
         </table>
     </div>
