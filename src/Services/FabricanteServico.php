@@ -3,6 +3,7 @@ namespace ExemploCrud\Services;
 
 use Exception;
 use ExemploCrud\Database\ConexaoBD;
+use ExemploCrud\Helpers\Utils;
 use ExemploCrud\Models\Fabricante;
 use PDO;
 use Throwable;
@@ -16,12 +17,13 @@ final class FabricanteServico{
     }
 
     public function listarTodos():array{
-        $sql = "SELECT * FROM fabricantes ORDER BY nome";
+        $sql = "SELECT * FROM fabricante ORDER BY nome";
         try {
         $consulta = $this->conexao->prepare($sql);
         $consulta->execute();
         return $consulta->fetchall(PDO::FETCH_ASSOC);
         } catch (Throwable $erro) {
+            Utils::registrarLog($erro);
            throw new Exception("Erro:".$erro->getMessage());
         }
     }

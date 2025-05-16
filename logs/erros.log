@@ -1,5 +1,10 @@
-[2025-05-16 10:56:15]
-Arquivo: C:\xampp\htdocs\xampp\exemplo-crud-poo-luca\fabricantes\visualizar.php
-Linha: 12
-Mensagem: Call to undefined method ExemploCrud\Services\FabricanteServico::listarTodo()
+[2025-05-16 11:00:57]
+Arquivo: C:\xampp\htdocs\xampp\exemplo-crud-poo-luca\src\Services\FabricanteServico.php
+Linha: 23
+Mensagem: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'vendas.fabricante' doesn't exist
+
+[2025-05-16 11:00:57]
+Arquivo: C:\xampp\htdocs\xampp\exemplo-crud-poo-luca\src\Services\FabricanteServico.php
+Linha: 27
+Mensagem: Erro:SQLSTATE[42S02]: Base table or view not found: 1146 Table 'vendas.fabricante' doesn't exist
 
