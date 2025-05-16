@@ -6,11 +6,10 @@ use ExemploCrud\Services\FabricanteServico;
 require_once "../vendor/autoload.php";
 $mensagemDeErro = "";
 
-die("ok");
 
 try {
     $fabricanteServico = new FabricanteServico();
-    $listaDeFabricantes = $fabricanteServico->listarTodo();
+    $listaDeFabricantes = $fabricanteServico->listarTodos();
     $quantidade = count($listaDeFabricantes);
 } catch (Throwable $erro) {
     Utils::registrarLog($erro);

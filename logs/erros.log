@@ -1,0 +1,5 @@
+[2025-05-16 10:56:15]
+Arquivo: C:\xampp\htdocs\xampp\exemplo-crud-poo-luca\fabricantes\visualizar.php
+Linha: 12
+Mensagem: Call to undefined method ExemploCrud\Services\FabricanteServico::listarTodo()
+
