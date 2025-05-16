@@ -1,4 +1,5 @@
 <?php
+
 namespace ExemploCrud\Database;
 
 use Exception;
@@ -13,22 +14,22 @@ abstract class ConexaoBD
     private static string $senha = "";
     private static string $banco = "vendas";
 
-    public static function  getConexao():PDO
+    public static function  getConexao(): PDO
     {
-        if(!isset(self::$conexao)){
-            try{
+        if (!isset(self::$conexao)) {
+            try {
 
                 self::$conexao = new PDO(
-                    "mysql:host=".self::$servidor.";dbname=".self::$banco.";charset=utf8",
-                    self::$usuario, self::$senha  
+                    "mysql:host=" . self::$servidor . ";dbname=" . self::$banco . ";charset=utf8",
+                    self::$usuario,
+                    self::$senha
                 );
-            
-                self::$conexao->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-            } catch (Throwable $erro){
 
-                throw new Exception("Erro ao conectar com o banco de dados!");
+                self::$conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            } catch (Throwable $erro) {
+
+                throw new Exception("Erro ao conectar com o banco de dados!") . $erro->getMessage();
             }
-
         }
         return self::$conexao;
     }
