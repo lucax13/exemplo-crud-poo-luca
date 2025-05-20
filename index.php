@@ -11,7 +11,7 @@
 <body>
     <div class="container mt-2 shadow-lg rounded pb-1">
 
-        <h1>Sistema Vendasss - CRUD PHP e SQL</h1>
+        <h1>Sistema Vendas - CRUD PHP e SQL</h1>
         <hr>
         <p>Operações de <b>inserção</b>, <b>leitura</b>, <b>atualização</b> e <b>exclusão</b> de dados.</p>
         <hr>

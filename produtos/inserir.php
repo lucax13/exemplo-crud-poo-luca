@@ -1,6 +1,13 @@
 <?php
+
+use ExemploCrud\Services\FabricanteServico;
+use ExemploCrud\Services\ProdutoServico;
+
 require_once "../src/funcoes-fabricantes.php";
 require_once "../src/funcoes-produtos.php";
+
+$fabricanteServico = new FabricanteServico;
+$produtoServico = new ProdutoServico;
 
 $listaDeFabricantes = listarFabricantes($conexao);
 
@@ -18,11 +25,10 @@ if(isset($_POST["inserir"])){
 
     $descricao = filter_input(INPUT_POST, "descricao", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
+    $produto = new Produto($conexao, $nome, $preco, $quantidade, $fabricanteID , $descricao);
+    $produtoServico->inserir($produto);
     
-    // chamar a função responsável por inserir o produto e passar os parametros
-    inserirProduto($conexao, $nome, $preco, $quantidade, $fabricanteID , $descricao);
-
-
+    
     //redirecionar para visualização do produto
     header("location:visualizar.php");
     exit;
